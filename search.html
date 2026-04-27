@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search - Sunset Used Car Sales</title>
+  <style>
+    /* 复用核心样式 */
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial,sans-serif}
+    body{
+      background: linear-gradient(135deg, #fff7f3 0%, #ffe8d9 100%);
+      min-height:100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header{
+      background: linear-gradient(90deg, #ff5c00, #ff7a2f);
+      color:white;
+      padding:18px 25px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      box-shadow:0 2px 10px rgba(255,92,0,0.15);
+      position:sticky;
+      top:0;
+      z-index:10;
+    }
+    .logo{
+      font-size:26px;
+      font-weight:bold;
+      letter-spacing:1px;
+    }
+    nav a{
+      color:white;
+      margin-left:25px;
+      text-decoration:none;
+      font-size:15px;
+      transition:0.2s;
+    }
+    nav a:hover{
+      color:#ffe0c8;
+      transform:translateY(-1px);
+    }
+    /* 搜索页自定义样式 */
+    .search-container{
+      flex:1;
+      max-width:800px;
+      margin:50px auto;
+      padding:0 20px;
+    }
+    .search-box{
+      background:white;
+      border-radius:16px;
+      padding:35px;
+      box-shadow:0 8px 25px rgba(0,0,0,0.08);
+      margin-bottom:30px;
+    }
+    .search-box h2{
+      color:#333;
+      margin-bottom:25px;
+      font-size:22px;
+      text-align:center;
+      position:relative;
+    }
+    .search-box h2::after{
+      content:'';
+      width:50px;
+      height:3px;
+      background:#ff5c00;
+      display:block;
+      margin:10px auto 0;
+      border-radius:3px;
+    }
+    /* 复用输入框/按钮样式 */
+    input, select{
+      width:100%;
+      padding:13px;
+      margin:12px 0;
+      border:1px solid #eee;
+      border-radius:8px;
+      background:#fafafa;
+      font-size:15px;
+      transition:0.3s;
+    }
+    input:focus, select:focus{
+      outline:none;
+      border-color:#ff5c00;
+      background:white;
+      box-shadow:0 0 0 3px rgba(255,92,0,0.1);
+    }
+    button{
+      background:linear-gradient(90deg, #ff5c00, #ff7a2f);
+      color:white;
+      border:none;
+      padding:15px;
+      width:100%;
+      border-radius:8px;
+      cursor:pointer;
+      margin-top:15px;
+      font-size:16px;
+      font-weight:bold;
+      transition:0.3s;
+      box-shadow:0 3px 10px rgba(255,92,0,0.2);
+    }
+    button:hover{
+      transform:translateY(-2px);
+      box-shadow:0 5px 15px rgba(255,92,0,0.3);
+    }
+    /* 搜索结果样式 */
+    .search-results{
+      background:white;
+      border-radius:16px;
+      padding:20px;
+      box-shadow:0 8px 25px rgba(0,0,0,0.08);
+    }
+    .result-item{
+      padding:15px;
+      border-bottom:1px solid #eee;
+      display:flex;
+      gap:15px;
+    }
+    .result-item:last-child{
+      border-bottom:none;
+    }
+    .result-item img{
+      width:100px;
+      height:70px;
+      object-fit:cover;
+      border-radius:8px;
+    }
+    .result-info{
+      flex:1;
+    }
+    .result-title{
+      font-size:17px;
+      font-weight:bold;
+      color:#333;
+    }
+    .result-price{
+      color:#ff5c00;
+      font-weight:bold;
+      margin-top:5px;
+    }
+    footer{
+      text-align: center;
+      padding: 25px 15px;
+      color: #666;
+      font-size: 14px;
+      margin-top: auto;
+    }
+    footer span{
+      color: #ff5c00;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="logo">Sunset</div>
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="search.html">Search</a>
+    <a href="seller.html">Sell Car</a>
+    <a href="login.html">Login</a>
+  </nav>
+</header>
+
+<div class="search-container">
+  <!-- 保留原有搜索功能 -->
+  <div class="search-box">
+    <h2>Search Your Ideal Car</h2>
+    <select id="brandSelect">
+      <option value="" disabled selected>Select Brand</option>
+      <option value="BYD">BYD</option>
+      <option value="TESLA">TESLA</option>
+      <option value="BMW">BMW</option>
+      <!-- 原有品牌选项保留 -->
+    </select>
+    <select id="yearSelect">
+      <option value="" disabled selected>Select Year</option>
+      <option value="2025">2025</option>
+      <option value="2024">2024</option>
+      <!-- 原有年份选项保留 -->
+    </select>
+    <input type="text" id="priceInput" placeholder="Max Price (e.g. 50000)" />
+    <button id="searchBtn">Search</button>
+  </div>
+
+  <!-- 搜索结果区域（保留原有逻辑） -->
+  <div class="search-results" id="searchResults">
+    <p style="color:#666; text-align:center; padding:20px;">Please enter search criteria and click search</p>
+    <!-- 结果项由脚本动态生成，保留原有逻辑 -->
+  </div>
+</div>
+
+<footer>
+  <span>Sunset Used Car Sales</span> © 2026
+</footer>
+
+<!-- 保留原有搜索功能脚本 -->
+<script>
+  const searchBtn = document.getElementById('searchBtn');
+  const searchResults = document.getElementById('searchResults');
+
+  // 原有搜索逻辑保留
+  searchBtn.addEventListener('click', () => {
+    const brand = document.getElementById('brandSelect').value;
+    const year = document.getElementById('yearSelect').value;
+    const maxPrice = document.getElementById('priceInput').value;
+
+    // 模拟搜索结果（原有逻辑替换此处）
+    searchResults.innerHTML = `
+      <div class="result-item">
+        <img src="car1.jpg" alt="${brand} Car">
+        <div class="result-info">
+          <div class="result-title">${brand} Model ${year || '2023'}</div>
+          <div class="result-price">$${maxPrice || '35000'}</div>
+          <p style="font-size:14px; color:#666; margin-top:5px;">20,000 km | Bright Silver</p>
+        </div>
+      </div>
+    `;
+  });
+</script>
+</body>
+</html>

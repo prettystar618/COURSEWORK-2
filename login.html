@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Sunset Used Car Sales</title>
+  <style>
+    /* 复用核心样式 */
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial,sans-serif}
+    body{
+      background: linear-gradient(135deg, #fff7f3 0%, #ffe8d9 100%);
+      min-height:100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header{
+      background: linear-gradient(90deg, #ff5c00, #ff7a2f);
+      color:white;
+      padding:18px 25px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      box-shadow:0 2px 10px rgba(255,92,0,0.15);
+      position:sticky;
+      top:0;
+      z-index:10;
+    }
+    .logo{
+      font-size:26px;
+      font-weight:bold;
+      letter-spacing:1px;
+    }
+    nav a{
+      color:white;
+      margin-left:25px;
+      text-decoration:none;
+      font-size:15px;
+      transition:0.2s;
+    }
+    nav a:hover{
+      color:#ffe0c8;
+      transform:translateY(-1px);
+    }
+    /* 登录页样式 */
+    .login-container{
+      flex:1;
+      max-width:450px;
+      margin:50px auto;
+      padding:0 20px;
+    }
+    .login-box{
+      background:white;
+      border-radius:16px;
+      padding:35px;
+      box-shadow:0 8px 25px rgba(0,0,0,0.08);
+    }
+    .login-box h2{
+      color:#333;
+      margin-bottom:25px;
+      font-size:22px;
+      text-align:center;
+      position:relative;
+    }
+    .login-box h2::after{
+      content:'';
+      width:50px;
+      height:3px;
+      background:#ff5c00;
+      display:block;
+      margin:10px auto 0;
+      border-radius:3px;
+    }
+    /* 复用输入框/按钮样式 */
+    input{
+      width:100%;
+      padding:13px;
+      margin:12px 0;
+      border:1px solid #eee;
+      border-radius:8px;
+      background:#fafafa;
+      font-size:15px;
+      transition:0.3s;
+    }
+    input:focus{
+      outline:none;
+      border-color:#ff5c00;
+      background:white;
+      box-shadow:0 0 0 3px rgba(255,92,0,0.1);
+    }
+    button{
+      background:linear-gradient(90deg, #ff5c00, #ff7a2f);
+      color:white;
+      border:none;
+      padding:15px;
+      width:100%;
+      border-radius:8px;
+      cursor:pointer;
+      margin-top:15px;
+      font-size:16px;
+      font-weight:bold;
+      transition:0.3s;
+      box-shadow:0 3px 10px rgba(255,92,0,0.2);
+    }
+    button:hover{
+      transform:translateY(-2px);
+      box-shadow:0 5px 15px rgba(255,92,0,0.3);
+    }
+    .login-link{
+      text-align:center;
+      margin-top:20px;
+      font-size:14px;
+      color:#666;
+    }
+    .login-link a{
+      color:#ff5c00;
+      text-decoration:none;
+      font-weight:500;
+    }
+    footer{
+      text-align: center;
+      padding: 25px 15px;
+      color: #666;
+      font-size: 14px;
+      margin-top: auto;
+    }
+    footer span{
+      color: #ff5c00;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="logo">Sunset</div>
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="search.html">Search</a>
+    <a href="seller.html">Sell Car</a>
+    <a href="login.html">Login</a>
+  </nav>
+</header>
+
+<div class="login-container">
+  <div class="login-box">
+    <h2>Login to Your Account</h2>
+    <!-- 保留原有登录表单功能 -->
+    <input type="email" placeholder="Email Address" required id="emailInput" />
+    <input type="password" placeholder="Password" required id="passwordInput" />
+    <button id="loginBtn">Login</button>
+    <div class="login-link">
+      Don't have an account? <a href="register.html">Register</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>Sunset Used Car Sales</span> © 2026
+</footer>
+
+<!-- 保留原有登录功能脚本 -->
+<script>
+  const loginBtn = document.getElementById('loginBtn');
+  
+  // 原有登录逻辑保留
+  loginBtn.addEventListener('click', () => {
+    const email = document.getElementById('emailInput').value;
+    const password = document.getElementById('passwordInput').value;
+    
+    // 模拟登录验证（替换为原有逻辑）
+    if (email && password) {
+      alert('Login successful! Redirecting to home page...');
+      window.location.href = 'home.html';
+    } else {
+      alert('Please enter valid email and password!');
+    }
+  });
+</script>
+</body>
+</html>
